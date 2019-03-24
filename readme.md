@@ -19,12 +19,12 @@ include the following main objects:
    - Vuejs  (for using new JS technology And building a smart components in the future in our project)   
    
 ## Chalets System Main Modules
-    - Authentication Module
-    - Chalets Managment Module
-    - Catalogue Module
-    - Booking  Mobule  
-    - Orders Module
-    - Clients Managment Module
+   - Authentication Module
+   - Chalets Managment Module
+   - Catalogue Module
+   - Booking  Mobule  
+   - Orders Module
+   - Clients Managment Module
 
 ## Installation 
     - git clone https://github.com/ahmed-atta/chalets.git
