@@ -129,7 +129,7 @@
         @foreach($attributes as $attribute)
           <div class="form-group">
              <label> {{ $attribute->name }}</label>
-                  <input type="text" class="form-control" name="attributes[ {{$attribute->id}} ]"  placeholder="{{ $attribute->description }}">
+                  <input type="text" class="form-control" name="attributes[ {{$attribute->id}} ]"  placeholder="{{ $attribute->description }}" required="">
           </div>
         @endforeach
       </div>

@@ -16,12 +16,11 @@
   <div class="card mt-4">
     <div class="card-body">
       <h2>
-        <a href="{{route('attributes.show', $attribute->id)}}">
+        <!-- a href="{{route('attributes.show', $attribute->id)}}" -->
           {{$attribute->name}}
-        </a>
       </h2> 
       <h7>{{ $attribute->description }}</h7>
-        <a href="{{route('attributes.edit', $attribute->id)}}" class="btn btn-info">Edit</a>
+        <!-- a href="{{route('attributes.edit', $attribute->id)}}" class="btn btn-info">Edit</a -->
         <form onsubmit="return confirm('Are you sure you want to delete this attribute?')" class="d-inline-block" method="post" action="{{route('attributes.destroy', $attribute->id)}}">
           @csrf
           @method('delete')
