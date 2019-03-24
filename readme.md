@@ -1,8 +1,8 @@
-<p align="center">Chatets Managment System</p>
+<p align="center">Chalets Managment System</p>
 
 ## About Chalets System
 
-Chatets Managment System is a web application for managing chalets data and building chalets catalogue.
+Chalets Managment System is a web application for managing chalets data and building chalets catalogue.
 include the following main objects:
  
 - Chalets  
