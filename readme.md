@@ -33,6 +33,7 @@ include the following main objects:
     - [storage/ , bootstrap/cache/] directories should be writable
     - php artisan migrate
     - php artisan db:seed
+    - php artisan key:generate
     - php artisan serve   
     - Go To http://127.0.0.1:8000/
 
