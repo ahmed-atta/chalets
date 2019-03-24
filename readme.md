@@ -1,8 +1,8 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center">Chatets Managment System</p>
 
 ## About Chalets System
 
-Chalets System is a web application for managing chalets data and making chalets catalogue.
+Chatets Managment System is a web application for managing chalets data and building chalets catalogue.
 include the following main objects:
  
 - Chalets  
