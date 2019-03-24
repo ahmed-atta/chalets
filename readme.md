@@ -2,7 +2,8 @@
 
 ## About Chalets System
 
-Chalets is a web application for managing chalets data and chalets catalogue include the following main objects:
+Chalets System is a web application for managing chalets data and making chalets catalogue.
+include the following main objects:
  
 - Chalets  
 - Attributes 
@@ -24,6 +25,16 @@ Chalets is a web application for managing chalets data and chalets catalogue inc
 - Booking  Mobule  
 - Orders Module
 - Clients Managment Module
+
+## Installation 
+1- git clone https://github.com/ahmed-atta/chalets.git
+2- composer install
+3- rename the .env.example file to .env  & update DB connection settings
+4- [storage/ , bootstrap/cache/] directories should be writable
+5- php artisan migrate
+6- php artisan db:seed
+7- php artisan serve   
+8- Go To http://127.0.0.1:8000/
 
 
 ## License
