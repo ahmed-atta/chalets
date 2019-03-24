@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Chalet;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
     /**
@@ -21,8 +22,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index(){
+        $chalets = Chalet::with(['attributes', 'media','prices'])->orderBy('id', 'desc')->paginate(10);
+        return view('home', ['chalets' => $chalets]);
+    }
+
+    public function dashboard(){
+
         return view('home');
     }
 }

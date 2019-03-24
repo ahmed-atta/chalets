@@ -12,4 +12,9 @@ class Attribute extends Model
      * @var array
      */
     protected $fillable = ['name','description'];
+
+    public function chalets()
+    {
+        return $this->belongsToMany('App\Chalet','chalet_attributes');
+    }
 }

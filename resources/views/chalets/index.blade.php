@@ -4,25 +4,25 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('All Attributes') }}</div>
+        <div class="card-header">قائمة الإستراحات </div>
         <div class="card-body">
 
   <h3>
     {{-- @auth --}}
-       <a href="{{ route('attributes.create') }}" class="btn btn-success">Create Attribute</a>
+       <a href="{{ route('chalets.create') }}" class="btn btn-success">إضافة إستراحة جديدة </a>
     {{-- @endauth --}}
     </h3>
-  @foreach($attributes as $attribute)
+  @foreach($chalets as $chalet)
   <div class="card mt-4">
     <div class="card-body">
       <h2>
-        <a href="{{route('attributes.show', $attribute->id)}}">
-          {{$attribute->name}}
+        <a href="{{route('chalets.show', $chalet->id)}}">
+          {{$chalet->title}}
         </a>
       </h2> 
-      <h7>{{ $attribute->description }}</h7>
-        <a href="{{route('attributes.edit', $attribute->id)}}" class="btn btn-info">Edit</a>
-        <form onsubmit="return confirm('Are you sure you want to delete this attribute?')" class="d-inline-block" method="post" action="{{route('attributes.destroy', $attribute->id)}}">
+      <h7>{{ $chalet->description }}</h7>
+        <a href="{{route('chalets.edit', $chalet->id)}}" class="btn btn-info">Edit</a>
+        <form onsubmit="return confirm('Are you sure you want to delete this chalet?')" class="d-inline-block" method="post" action="{{route('chalets.destroy', $chalet->id)}}">
           @csrf
           @method('delete')
           <button type="submit" class="btn btn-danger">Delete</button>
@@ -33,7 +33,7 @@
   </div>
   @endforeach
   <div class="mt-4">
-    {{$attributes->links()}}
+    {{$chalets->links()}}
   </div>
 
  </div>

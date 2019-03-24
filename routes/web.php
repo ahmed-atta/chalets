@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('chalets', 'ChaletController');
-Route::resource('attributes', 'AttributeController');
+Route::group(['middleware' => ['web','auth']], function () {
+
+    Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+	Route::resource('chalets', 'ChaletController');
+	Route::resource('attributes', 'AttributeController');
+	Route::resource('orders', 'OrderController');
+});
+
