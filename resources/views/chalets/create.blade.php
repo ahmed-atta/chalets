@@ -1,10 +1,9 @@
-@extends('layouts.app')
-@section('content')
+@extends('dashboard')
+@section('icontent')
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
 <script type="text/javascript">
   window.onload = function () {
@@ -18,12 +17,6 @@
             },
             mounted: function() {
                   $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
-                    //var self = this;
-                    //$('.datepicker').datepicker({
-                     // onSelect:function(selectedDate, datePicker) {            
-                          //self.date = selectedDate;
-                     // }
-                    //});
                 },
             methods: {
                 addRow: function() {
@@ -53,35 +46,40 @@
 
  
 </script>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8"  >
 
 
-  @if($errors->all())
-                    <div class="alert alert-danger">
-                      @foreach($errors->all() as $error)
-                      <li>{{$error}}</li>
-                      @endforeach
-                    </div>
-                  @endif
+@if($errors->all())
+    <div class="alert alert-danger">
+      @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+    </div>
+@endif
 
 
 <form action="{{route('chalets.store')}}" method="post" enctype="multipart/form-data"  id="form1">
 @csrf
-
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header btn" id="headingOne" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-      <h2 class="mb-0">
-          البيانات الأساسية 
-      </h2>
-    </div>
-
-    <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-      
-                <div class="form-row">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="mtab1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true"> البيانات الأساسية </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="mtab2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">المواصفات الأساسية </a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" id="mtab3" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">الصور  </a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" id="mtab4" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">  الأسعار </a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" id="mtab5" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false"> الخريطة</a>
+  </li>
+  
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="mtab1">
+           <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="">اسم الإستراحة </label>
                     <input type="text" class="form-control" id="title" name ="title" placeholder="اسم الاستراحة" required >
@@ -113,37 +111,19 @@
                     </select>
                   </div>
                 </div>
-                 
-               
-      </div>
-    </div>
+
   </div>
-  <div class="card">
-    <div class="card-header btn collapsed" id="heading2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-      <h2 class="mb-0">
-          المواصفات الأساسية 
-      </h2>
-    </div>
-    <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        @foreach($attributes as $attribute)
+  <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="mtab2">
+      @foreach($attributes as $attribute)
           <div class="form-group">
              <label> {{ $attribute->name }}</label>
                   <input type="text" class="form-control" name="attributes[ {{$attribute->id}} ]"  placeholder="{{ $attribute->description }}" required="">
           </div>
         @endforeach
-      </div>
-    </div>
+
   </div>
-  <div class="card">
-    <div class="card-header btn collapsed"  id="heading3"  data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-      <h2 class="mb-0">
-          الصور 
-      </h2>
-    </div>
-    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
-      <div class="card-body">
-        <div class="form-row">
+  <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="mtab3">
+      <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputFrom">عنوان الصورة </label>
               <input type="text" class="form-control " name="images_titles[]">
@@ -180,20 +160,9 @@
               <button type="button" class="btn btn-success btn-sm" @click="addImage">إضافة صورة جديدة</button>
           </div> 
 
-
-      </div>
-    </div>
   </div>
-  <div class="card">
-    <div class="card-header btn collapsed" id="heading4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-      <h2 class="mb-0">
-          الأسعار 
-      </h2>
-    </div>
-    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
-      <div class="card-body">
-          
-          <div class="form-row">
+  <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="mtab4">
+      <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputFrom">الفترة من </label>
               <input type="text" class="form-control datepicker" name="period_from[]">
@@ -230,28 +199,17 @@
               <button type="button" class="btn btn-success btn-sm" @click="addRow">إضافة فتره جديده</button>
           </div>
         
-       
-      </div>
-    </div>
-</div>
-<div class="card">
-    <div class="card-header btn  collapsed" id="heading5" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-      <h2 class="mb-0">
-          الخريطة 
-      </h2>
-    </div>
-    <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
-      <div class="card-body">
-            
-        
-         <!--our form-->
-        <h2>Google Maps Location</h2>
+  </div>
+  <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="mtab5">
+      <h2>Google Maps Location</h2>
         
              <input type="text" name="map_location" class="form-control" value='' >
-      </div>
-    </div>
   </div>
+  
 </div>
+
+
+
 
 <br/>
  <div class="form-group row">
@@ -266,8 +224,6 @@
 
 
 
-    </div>
-  </div>
 </div>
   
 @endsection

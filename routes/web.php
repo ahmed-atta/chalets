@@ -13,10 +13,12 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
+Route::get('details/{id}', 'HomeController@details')->name('details');
 
 Route::group(['middleware' => ['web','auth']], function () {
 
-    Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+    Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
+   
 	Route::resource('chalets', 'ChaletController');
 	Route::resource('attributes', 'AttributeController');
 	Route::resource('orders', 'OrderController');

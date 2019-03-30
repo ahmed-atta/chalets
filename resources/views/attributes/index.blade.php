@@ -1,16 +1,9 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">{{ __('All Attributes') }}</div>
-        <div class="card-body">
+@extends('dashboard')
+@section('icontent')
+
 
   <h3>
-    {{-- @auth --}}
-       <a href="{{ route('attributes.create') }}" class="btn btn-success">Create Attribute</a>
-    {{-- @endauth --}}
+       <a href="{{ route('attributes.create') }}" class="btn btn-success">إضافة ميزة جديدة</a>
     </h3>
   @foreach($attributes as $attribute)
   <div class="card mt-4">
@@ -34,12 +27,6 @@
   <div class="mt-4">
     {{$attributes->links()}}
   </div>
-
- </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 @endsection

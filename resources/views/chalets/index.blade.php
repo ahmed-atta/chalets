@@ -1,12 +1,5 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">قائمة الإستراحات </div>
-        <div class="card-body">
-
+@extends('dashboard')
+@section('icontent')
   <h3>
     {{-- @auth --}}
        <a href="{{ route('chalets.create') }}" class="btn btn-success">إضافة إستراحة جديدة </a>
@@ -27,20 +20,11 @@
           @method('delete')
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
-      
-
+      </div>
     </div>
-  </div>
   @endforeach
   <div class="mt-4">
     {{$chalets->links()}}
   </div>
-
- </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 @endsection

@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except(['index','details']);
     }
 
     /**
@@ -28,7 +28,16 @@ class HomeController extends Controller
     }
 
     public function dashboard(){
-
-        return view('dashboard');
+        $chalets_count = Chalet::where('owner_id', \Auth::id())->count();
+        $orders_count = \App\Order::with(['chalets'=> function($chalet){
+                return $chalet->where('owner_id', \Auth::id()); 
+            }])->count();
+        return view('stats',['chalets_count'=>$chalets_count,'orders_count'=>$orders_count ]);
+    }
+    public function details($id)
+    {
+        $chalet = Chalet::with(['attributes', 'media','prices'])->findOrFail($id);
+        //dd($chalet);
+        return view('details', ['chalet' => $chalet]);
     }
 }

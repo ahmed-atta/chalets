@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Order;
 
 class OrderController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with(['chalets'=> function ($chalet) {
+            return $chalet->where('owner_id', Auth::id());
+        }, 'users'])->paginate(10);
+        //dd($orders);
+        return view('orders.index', ['orders' => $orders]);
     }
 
     /**
@@ -34,7 +41,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Order::insert([
+            'period_from' => $request->period_from,
+            'period_to' => $request->period_to,
+            'total_price' => $request->total_price,
+            'chalet_id' => $request->chalet_id,
+            'status' => 0,
+            'user_id' => Auth::id()
+
+        ]);
+
+        \Session::flash('message', 'تم إرسال طلب الحجز '); 
+        return redirect(url()->previous());
     }
 
     /**

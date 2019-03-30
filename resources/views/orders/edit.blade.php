@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('إضافة ميزة جديدة') }}</div>
+        <div class="card-header">{{ __('Add new attribute') }}</div>
         <div class="card-body">
                   @if($errors->all())
                     <div class="alert alert-danger">
