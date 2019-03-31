@@ -74,7 +74,7 @@
 
                         @foreach($chalet->media as $media)
                           <div class="carousel-item active">
-                            <img src="{{ asset('/') }}{{ $media->path }}/{{ $media->filename }}"  class="d-block w-100" alt="...">
+                            <img src="{{ asset('/') }}{{ $media->path }}/{{ $media->filename }}"  class="d-block w-100 " height="500" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                               <h5>{{ $media->title }}</h5>
                               <p>{{ $media->description }}</p>
@@ -124,11 +124,11 @@
      <div class="row text-right">
         <div class="col-md-4">
             <label for="inputFrom"> من :  </label>
-             <input type="text" class="form-control fdatepicker" name="period_from"  id="pf"> 
+             <input type="text" class="form-control fdatepicker" name="period_from"  id="pf" required=""> 
         </div>
         <div class="col-md-4">
             <label for="inputTo">إلى : </label>
-            <input type="text" class="form-control tdatepicker" name="period_to"  id="pt" >
+            <input type="text" class="form-control tdatepicker" name="period_to"  id="pt" required="">
         </div>
         <div class="col-md-2">
             <label for="inputTo">السعر الكلي : </label>

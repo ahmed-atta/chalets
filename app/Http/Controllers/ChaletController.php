@@ -54,7 +54,8 @@ class ChaletController extends Controller
        // Attributes
         if(!empty($input['attributes'])){
             foreach($input['attributes'] as $key => $attribute){
-                $ch->attributes()->attach($key,['value'=>$attribute ]);
+                if(!empty($attribute))
+                    $ch->attributes()->attach($key,['value'=>$attribute ]);
             }
         }
         //  Media

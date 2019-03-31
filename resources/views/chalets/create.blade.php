@@ -111,6 +111,7 @@
                     </select>
                   </div>
                 </div>
+           <a class="btn btn-primary"  data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">التالي </a>
 
   </div>
   <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="mtab2">
@@ -121,6 +122,7 @@
           </div>
         @endforeach
 
+        <a class="btn btn-primary"  data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">التالي </a>
   </div>
   <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="mtab3">
       <div class="form-row">
@@ -160,6 +162,7 @@
               <button type="button" class="btn btn-success btn-sm" @click="addImage">إضافة صورة جديدة</button>
           </div> 
 
+         <a class="btn btn-primary" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">التالي </a>
   </div>
   <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="mtab4">
       <div class="form-row">
@@ -198,12 +201,18 @@
           <div class="form-group col-md-2">
               <button type="button" class="btn btn-success btn-sm" @click="addRow">إضافة فتره جديده</button>
           </div>
-        
+
+        <a class="btn btn-primary" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">التالي </a>
   </div>
   <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="mtab5">
-      <h2>Google Maps Location</h2>
-        
-             <input type="text" name="map_location" class="form-control" value='' >
+      <h6>Google Maps Location</h6>
+      
+      <br/> <br/> <br/> <br/>
+       <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">حفظ</button>
+          </div>
+        </div>
   </div>
   
 </div>
@@ -211,12 +220,7 @@
 
 
 
-<br/>
- <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-    </div>
-  </div>
+
  
 </form>
 

@@ -20,7 +20,9 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm text-right">
             <title>{{ $chalet->title }}</title>
+                   @if(isset($chalet->media[0]->filename) ) 
                   <img src="{{ asset('/')}}{{ $chalet->media[0]->path}}/{{ $chalet->media[0]->filename }}" height="225"/>
+                   @endif
                 <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $chalet->title }}</text></svg>
             <div class="card-body">
               <p class="card-text">{{ $chalet->description }}</p>
@@ -30,7 +32,7 @@
                   <a href="{{ route('details',['id'=>$chalet->id]) }}"  class="btn btn-sm btn-outline-secondary">حجز </a>
                 </div>
                 <small class="text-muted">
-                  @if(isset($chalet->prices[0]->day_price)) 
+                  @if(isset($chalet->prices[0]->day_price) ) 
                     {{  $chalet->prices[0]->day_price }}
                   @endif
                 </small>
