@@ -16,7 +16,7 @@
                 images: []
             },
             mounted: function() {
-                  $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+                  $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd',minDate: new Date() });
                 },
             methods: {
                 addRow: function() {
@@ -117,7 +117,7 @@
       @foreach($attributes as $attribute)
           <div class="form-group">
              <label> {{ $attribute->name }}</label>
-                  <input type="text" class="form-control" name="attributes[ {{$attribute->id}} ]"  placeholder="{{ $attribute->description }}" required="">
+                  <input type="text" class="form-control" name="attributes[ {{$attribute->id}} ]"  placeholder="{{ $attribute->description }}">
           </div>
         @endforeach
 

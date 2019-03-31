@@ -103,11 +103,11 @@
     <div class="row" >
         <div class="col-md-4">
             <label for="inputFrom"> من :  </label>
-            {{ $price->period_from }}
+            {{ date('d/m/Y', strtotime($price->period_from))  }}
         </div>
         <div class="col-md-4">
             <label for="inputTo">إلى : </label>
-            {{ $price->period_to }}
+            {{ date('d/m/Y', strtotime($price->period_to))  }}
         </div>
         <div class="col-md-2">
           <label for="inputPrice"> سعر اليوم</label>
