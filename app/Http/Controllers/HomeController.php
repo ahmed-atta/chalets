@@ -29,9 +29,10 @@ class HomeController extends Controller
 
     public function dashboard(){
         $chalets_count = Chalet::where('owner_id', \Auth::id())->count();
-        $orders_count = \App\Order::with(['chalets'=> function($chalet){
-                return $chalet->where('owner_id', \Auth::id()); 
-            }])->count();
+	$orders_count = \DB::table('orders')->join('chalets', function ($join) {
+            		$join->on('chalets.id', '=', 'orders.chalet_id')
+                 	->where('chalets.owner_id', '>', \Auth::id());
+			})->count();
         return view('stats',['chalets_count'=>$chalets_count,'orders_count'=>$orders_count ]);
     }
     public function details($id)
